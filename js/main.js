@@ -49,6 +49,7 @@
 
             // Add the X Axis
             svg.append("g")
+            .attr('transform', 'translate(' + [0, 482] + ')')
                 .call(d3.axisBottom(x));
 
             //add the Y Axis
@@ -56,6 +57,7 @@
             var yScale = d3.scaleTime()
                 .domain(d3.extent(data, function (d) { return d.Time; }))
                 .range([height - margin.bottom, margin.top]);
+
             var yAxis = d3.axisLeft()
                 .scale(yScale)
                 .tickFormat(d3.timeFormat('%M:%S'));
