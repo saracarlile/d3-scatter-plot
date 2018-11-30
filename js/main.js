@@ -69,42 +69,6 @@
 
 
 
-            /*  for (var i = 0; i < data.length; i++) {
-                  let time = data[i]["Time"];
-                  var format = d3.timeFormat("%M:%S");
-                  console.log(format(time));
-              }
-
-            // scales
-
-            var xExtent = d3.extent(data, d => d.Year);
-            var xScale = d3.scaleTime()
-                .domain(xExtent)
-                .range([margin.left, width - margin.right]);
-
-            var yExtent = d3.extent(data => d.Time);
-            var yScale = d3.scaleTime()
-                .domain(yExtent)
-                .range([height - margin.bottom, margin.top]);
-
-            // create the circles
-            var svg = d3.select('svg');
-
-            svg.selectAll(".dot")
-                .data(data)
-                .enter().append("circle")
-                .attr("class", "dot")
-                .attr("r", 5)
-                .attr("cx", function (d) { return xScale(d.Year); })
-                .attr("cy", function (d) { return yScale(d.Time); })
-                .attr('fill', 'blue')
-                .attr('stroke', 'white');
-
-
-                  */
-
-
-
 
         });
 
