@@ -1,8 +1,8 @@
 (() => {
 
-    var width = 800;
+    var width = 900;
     var height = 700;
-    var margin = { top: 35, bottom: 35, left: 40, right: 35 };
+    var margin = { top: 35, bottom: 35, left: 35, right: 35 };
 
 
     fetch("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json")
@@ -46,6 +46,24 @@
                 .attr("cy", function (d) { return y(d.Time); });
 
 
+
+            // Add the X Axis
+            svg.append("g")
+                .call(d3.axisBottom(x));
+
+            //add the Y Axis
+
+            var yScale = d3.scaleTime()
+                .domain(d3.extent(data, function (d) { return d.Time; }))
+                .range([height - margin.bottom, margin.top]);
+            var yAxis = d3.axisLeft()
+                .scale(yScale)
+                .tickFormat(d3.timeFormat('%M:%S'));
+
+
+            svg.append('g')
+                .attr('transform', 'translate(' + [margin.left, 0] + ')')
+                .call(yAxis);
 
 
 
