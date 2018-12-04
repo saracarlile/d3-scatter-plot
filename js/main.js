@@ -32,9 +32,15 @@
                 d.Time = parseTime(d.Time);
             });
 
+            var maxY =  d3.max(data, function(d) { return d.Time} );
+            var minY =  d3.min(data, function(d) { return d.Time} );
+
+
             // Scale the range of the data
             x.domain(d3.extent(data, function (d) { return d.Year; }));
-            y.domain(d3.extent(data, function (d) { return d.Time; }));
+            y.domain([maxY, minY]);
+
+
 
 
             // Add the scatterplot
@@ -66,7 +72,8 @@
 
             var yScale = d3.scaleTime()
                 .domain(d3.extent(data, function (d) { return d.Time; }))
-                .range([height - margin.bottom, margin.top]);
+               // .range([height - margin.bottom, margin.top]);
+               .range([margin.top, height - margin.bottom]);
 
             var yAxis = d3.axisLeft()
                 .scale(yScale)
