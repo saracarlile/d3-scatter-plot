@@ -69,7 +69,7 @@
                     div.transition()
                         .duration(200)
                         .style("opacity", .9);
-                    div.html(formatTime(d.Time) + "<br/>" + formatYear(d.Year))
+                    div.html("Time: " + formatTime(d.Time) + "<br/>" + "Year: " + formatYear(d.Year) + "<br/>" + "Rider: " + d.Name +"<br/>" + "Doping: " + d.Doping)
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY - 28) + "px");
                 })
