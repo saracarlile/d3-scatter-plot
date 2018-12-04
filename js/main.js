@@ -1,8 +1,8 @@
 (() => {
 
     var width = 900;
-    var height = 700;
-    var margin = { top: 35, bottom: 35, left: 35, right: 35 };
+    var height = 538;
+    var margin = { top: 25, bottom: 25, left: 35, right: 25 };
 
 
     fetch("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json")
@@ -43,13 +43,23 @@
                 .enter().append("circle")
                 .attr("r", 5)
                 .attr("cx", function (d) { return x(d.Year); })
-                .attr("cy", function (d) { return y(d.Time); });
+                .attr("cy", function (d) { return y(d.Time); })
+                // add this attribute to change the color of the rect
+                .attr("fill", function (d){
+                    if(d["Doping"].length > 2){
+                        return "red";
+                    }
+                })
+                .attr("data-doping", function (d){
+                    return d.Doping;
+                });
+
 
 
 
             // Add the X Axis
             svg.append("g")
-            .attr('transform', 'translate(' + [0, 482] + ')')
+                .attr('transform', 'translate(' + [0, 513] + ')')
                 .call(d3.axisBottom(x));
 
             //add the Y Axis
